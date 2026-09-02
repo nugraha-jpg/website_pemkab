@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desa Kecamatan Lembang - BPS 2025</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;background:#f3f7fc;color:#172a46}
+body{overflow-x:hidden}
+button,select{font:inherit}
+.page{display:none;min-height:100vh}.page.active{display:block}
+.container{width:min(1440px,94%);margin:auto}
+
+/* ================= LIST ================= */
+.list-page{position:relative;padding:26px 0 60px;background:linear-gradient(180deg,#edf6ff 0,#f6f9fd 430px,#f3f7fc 100%);min-height:100vh}
+.list-page:before{content:"";position:absolute;left:0;right:0;top:0;height:285px;pointer-events:none;background:
+ radial-gradient(circle at 82% 12%,rgba(255,208,77,.28) 0 34px,transparent 35px),
+ radial-gradient(circle at 68% 30%,rgba(255,255,255,.7) 0 2px,transparent 3px),
+ radial-gradient(circle at 73% 18%,rgba(255,255,255,.55) 0 2px,transparent 3px),
+ linear-gradient(165deg,transparent 43%,rgba(152,194,222,.28) 44%,transparent 63%),
+ linear-gradient(20deg,transparent 45%,rgba(105,163,198,.17) 46%,transparent 67%);opacity:.95}
+.list-page .container{position:relative;z-index:1}
+.back-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;background:rgba(255,255,255,.92);border:1px solid #d5e1ef;border-radius:9px;color:#06458f;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(31,74,119,.09);margin-bottom:24px;transition:.2s}
+.back-btn:hover{transform:translateY(-1px);background:#fff;box-shadow:0 9px 22px rgba(31,74,119,.13)}
+.list-title{margin:0;font-size:37px;line-height:1.15;color:#0b3978;letter-spacing:-.6px;max-width:760px}
+.list-title:after{content:"";display:block;width:64px;height:6px;border-radius:10px;background:#ffc400;margin-top:13px}
+.list-subtitle{margin:13px 0 19px;font-size:17px;color:#405b7d}
+.breadcrumb{font-size:13px;color:#60728a;margin-bottom:28px}
+.breadcrumb::first-letter{color:#0a4c9b}
+.controls{background:rgba(255,255,255,.92);border:1px solid #dbe6f2;border-radius:14px;padding:20px 26px 22px;margin-bottom:25px;box-shadow:0 8px 25px rgba(35,73,116,.07);backdrop-filter:blur(5px)}
+.controls label{display:block;font-weight:800;color:#073d83;margin-bottom:9px;font-size:14px}
+.custom-select{position:relative;width:360px;max-width:100%}.custom-select__trigger{width:100%;min-height:52px;border:1px solid #d5e2f1;border-radius:14px;background:linear-gradient(180deg,#fff 0,#f5f9ff 100%);color:#1d314c;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 0 18px;cursor:pointer;box-shadow:0 10px 24px rgba(17,54,90,.06);transition:all .2s ease;border-bottom-width:2px;border-bottom-color:#cfe0f5}.custom-select__trigger:hover{border-color:#b9d1ef;box-shadow:0 12px 28px rgba(17,54,90,.09);transform:translateY(-1px)}.custom-select__trigger:focus-visible{outline:none;border-color:#70a9df;box-shadow:0 0 0 4px rgba(41,124,207,.12)}.custom-select__value{font-weight:800;letter-spacing:.06em;color:#113d73;text-transform:uppercase}.custom-select__icon{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:9px;background:linear-gradient(180deg,#edf5ff 0,#dfeeff 100%);color:#0f4d9b;font-size:18px;transition:transform .25s ease,background .2s ease}.custom-select.open .custom-select__icon{transform:rotate(180deg);background:linear-gradient(180deg,#dfeeff 0,#d2e6ff 100%)}.custom-select__panel{position:absolute;top:calc(100% + 10px);left:0;width:100%;max-width:420px;background:rgba(255,255,255,.98);border:1px solid #dfeaf7;border-radius:16px;box-shadow:0 22px 55px rgba(17,60,98,.2);padding:10px;display:none;z-index:20;backdrop-filter:blur(10px);animation:selectFade .2s ease}.custom-select.open .custom-select__panel{display:block}.custom-select__search{padding:4px 4px 10px}.custom-select__search input{width:100%;border:1px solid #d9e6f8;border-radius:10px;padding:11px 12px;background:#f9fbff;color:#1d314c;font:inherit;outline:none;transition:all .15s ease}.custom-select__search input:focus{border-color:#67a8eb;box-shadow:0 0 0 3px rgba(41,124,207,.12);background:#fff}.custom-select__options{list-style:none;padding:0;margin:0;max-height:220px;overflow-y:auto}.custom-select__options::-webkit-scrollbar{width:8px}.custom-select__options::-webkit-scrollbar-thumb{background:#cdddf1;border-radius:50px}.custom-select__option{padding:12px 14px;border-radius:10px;cursor:pointer;font-weight:700;letter-spacing:.04em;color:#21456d;transition:all .15s ease;text-transform:uppercase}.custom-select__option:hover{background:linear-gradient(180deg,#edf5ff 0,#e5f0ff 100%);color:#0d3b73}.custom-select__option.is-selected{background:linear-gradient(135deg,#0b5ec7 0,#0d4fa7 100%);color:#fff;box-shadow:0 8px 16px rgba(11,94,199,.22)}@keyframes selectFade{from{opacity:0;transform:translateY(-6px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}.section-title{display:flex;align-items:center;gap:10px;border-top:0;padding:0;margin:0 0 17px;font-size:21px;font-weight:800;color:#0c418a}
+.section-title:before{content:"⌂";width:38px;height:38px;border-radius:10px;background:#e7f2ff;display:inline-flex;align-items:center;justify-content:center;font-size:22px;color:#0754a4;box-shadow:inset 0 0 0 1px #d5e8fb}
+.section-title:after{content:"";position:absolute}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;align-items:stretch}
+.village-card{background:rgba(255,255,255,.97);border:1px solid #e0e7ef;border-radius:10px;overflow:hidden;box-shadow:0 5px 16px rgba(23,58,96,.07);display:flex;flex-direction:row;padding:10px;gap:13px;min-height:126px;transition:transform .2s,box-shadow .2s,border-color .2s}
+.village-card:hover{transform:translateY(-3px);border-color:#c9dbef;box-shadow:0 12px 25px rgba(25,68,111,.12)}
+.village-card img{width:122px;height:106px;flex:0 0 122px;object-fit:cover;border-radius:7px;display:block;background:#e9eef5}
+.card-body{padding:2px 0;display:flex;flex-direction:column;flex:1;min-width:0}
+.card-body h3{font-size:16px;line-height:1.25;margin:2px 0 11px;color:#0a3d82;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.info-row{display:flex;justify-content:space-between;gap:6px;font-size:11.5px;margin:4px 0;color:#5a687b;white-space:nowrap}.info-row b{color:#24364e;white-space:nowrap}
+.detail-btn{margin-top:auto;width:100%;border:0;border-radius:5px;background:#0754b3;color:#fff;padding:8px 7px;font-size:11.5px;font-weight:800;cursor:pointer;transition:.2s}.detail-btn:hover{background:#063f8b}
+.source{margin-top:22px;padding:13px 15px;background:#edf6ff;border:1px solid #d3e7fb;border-radius:9px;font-size:12px;color:#365b83}
+
+/* ================= DETAIL ================= */
+.detail-page{padding:25px 0 55px;background:#f3f7fc;min-height:100vh}.detail-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(310px,1fr);gap:20px}.detail-main,.sidebar-card{background:#fff;border:1px solid #e0e7ef;border-radius:11px;box-shadow:0 6px 18px rgba(23,58,96,.06)}.hero-detail{padding:0;overflow:hidden}.hero-content{display:grid;grid-template-columns:48% 52%;min-height:310px}.hero-content img{width:100%;height:310px;object-fit:cover}.hero-text{padding:42px 38px}.hero-text h1{margin:0 0 10px;color:#0c448e;font-size:34px}.hero-text .district{font-size:16px;margin-bottom:25px;color:#52657d}.hero-text p{line-height:1.85;color:#34445a;margin:0}.detail-card{margin-top:18px;padding:21px}.detail-card h2,.sidebar-card h2{font-size:18px;color:#10458c;margin:0 0 18px}.general-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}.general-col{padding-right:28px}.general-col+.general-col{border-left:1px solid #e2e7ee;padding-left:28px}.data-line{display:grid;grid-template-columns:160px 20px 1fr;gap:5px;margin:12px 0;font-size:13px}.potential-grid{display:grid;grid-template-columns:repeat(4,1fr)}.potential{padding:5px 18px;border-right:1px solid #e2e7ee}.potential:first-child{padding-left:0}.potential:last-child{border:0}.icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:9px;background:#edf6ff}.potential strong{display:block;margin-bottom:5px}.potential small{color:#526074;line-height:1.5}.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.gallery-grid img{width:100%;height:120px;object-fit:cover;border-radius:7px}.sidebar{display:flex;flex-direction:column;gap:18px}.sidebar-card{padding:18px}.map{height:160px;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,#dff0d7,#eef5db);position:relative}.map:before{content:"";position:absolute;inset:0;background:linear-gradient(25deg,transparent 48%,rgba(130,160,110,.35) 49%,transparent 51%),linear-gradient(145deg,transparent 47%,rgba(130,160,110,.28) 48%,transparent 50%);background-size:100px 80px}.pin{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:35px}.map-btn{display:block;text-align:center;margin-top:10px;padding:9px;border:1px solid #d5dde8;border-radius:6px;color:#0755b7;text-decoration:none;font-size:13px;font-weight:700}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{border:1px solid #e1e6ed;border-radius:7px;padding:14px}.stat .big{font-size:20px;font-weight:700;color:#16263d}.stat small{display:block;margin-top:5px;color:#59677a}.contact p{margin:10px 0;line-height:1.6;font-size:14px}.source-box{font-size:13px;line-height:1.6;color:#405068}.notice{margin-top:18px;padding:14px 18px;background:#edf6ff;border:1px solid #cfe3ff;border-radius:7px;color:#234b7d;font-size:12px}
+@media(max-width:1200px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:1000px){.detail-layout{grid-template-columns:1fr}}
+@media(max-width:650px){.container{width:92%}.grid{grid-template-columns:1fr}.list-title{font-size:30px}.village-card{min-height:120px}.village-card img{width:110px;flex-basis:110px;height:100px}.hero-content{grid-template-columns:1fr}.hero-content img{height:230px}.hero-text{padding:25px}.general-grid,.potential-grid{grid-template-columns:1fr}.general-col{padding:0}.general-col+.general-col{border-left:0;border-top:1px solid #e2e7ee;padding:12px 0 0}.potential{border-right:0;border-bottom:1px solid #e2e7ee;padding:12px 0}.gallery-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.select{width:100%}.section-title{font-size:18px}}
+
+.bps-overview{margin-top:24px}.bps-card{background:#fff;border:1px solid #dfe8f2;border-radius:12px;box-shadow:0 6px 18px rgba(23,58,96,.06);padding:22px;margin-top:16px}.bps-card h2{margin:0 0 8px;color:#0d448d;font-size:20px}.bps-card .lead{margin:0 0 16px;color:#52657d;font-size:13px;line-height:1.7}.bps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.bps-stat{border:1px solid #e1e8f0;border-radius:10px;padding:14px;background:#f9fbfe}.bps-stat .n{font-size:23px;font-weight:800;color:#0b4b97}.bps-stat small{display:block;color:#617087;margin-top:4px}.bps-table-wrap{overflow:auto;border:1px solid #e0e7ef;border-radius:9px}.bps-table{width:100%;border-collapse:collapse;min-width:680px;font-size:12.5px}.bps-table th,.bps-table td{padding:9px 10px;border-bottom:1px solid #e8edf3;text-align:left;vertical-align:top}.bps-table th{background:#eef6ff;color:#164c8c;font-weight:800}.bps-table tr:last-child td{border-bottom:0}.bps-table td.num{text-align:right;white-space:nowrap}.bps-table caption{text-align:left;padding:13px 12px;background:#fff;font-weight:800;color:#27476a}.bps-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}.bps-note{margin-top:10px;font-size:11px;color:#64758b;line-height:1.6}.bps-source-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.bps-source-links a{display:inline-block;padding:8px 11px;border:1px solid #d4e4f7;border-radius:8px;color:#0754ad;text-decoration:none;background:#f7fbff;font-size:12px;font-weight:700}.village-extra{margin-top:18px}.village-extra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.mini{border:1px solid #e1e7ee;border-radius:9px;padding:12px;background:#fbfdff}.mini b{display:block;color:#0d448d;font-size:16px}.mini small{color:#64738a}.data-tag{display:inline-block;padding:3px 7px;border-radius:20px;background:#edf6ff;color:#1b568f;font-size:10px;font-weight:800;margin-left:5px}.detail-description-note{font-size:12px;color:#6a7890;margin-top:10px}.source strong{color:#0b448d}
+@media(max-width:1100px){.bps-grid{grid-template-columns:repeat(2,1fr)}.bps-columns{grid-template-columns:1fr}.village-extra-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.bps-grid,.village-extra-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<section id="listPage" class="page active list-page">
+  <main class="container">
+    <button class="back-btn" onclick="backToKecamatan()">←&nbsp; Kembali ke Halaman Kecamatan</button>
+    <h1 class="list-title">Desa di Kecamatan Lembang</h1>
+    <p class="list-subtitle">Data wilayah, pemerintahan, penduduk, sosial, pertanian, pariwisata, transportasi, komunikasi, perbankan, koperasi, dan perdagangan berdasarkan <strong>Kecamatan Lembang Dalam Angka 2025</strong>.</p>
+    <div class="breadcrumb">Kecamatan &nbsp;›&nbsp; Desa &nbsp;›&nbsp; Lembang</div>
+
+    <div class="controls">
+      <label for="districtSearch">Pilih Kecamatan</label>
+      <div class="custom-select" id="districtSelect">
+        <button class="custom-select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="custom-select__value">LEMBANG</span><span class="custom-select__icon">▾</span>
+        </button>
+        <div class="custom-select__panel" role="listbox" aria-label="Daftar kecamatan">
+          <div class="custom-select__search"><input id="districtSearch" type="text" placeholder="Cari kecamatan..." aria-label="Cari kecamatan" autocomplete="off"></div>
+          <ul id="districtOptions" class="custom-select__options"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Daftar Desa di Kecamatan <span id="districtName">Lembang</span></div>
+    <div id="villageGrid" class="grid"></div>
+
+    <div class="bps-overview">
+      <div class="bps-card">
+        <h2>Gambaran Umum Kecamatan Lembang</h2>
+        <p class="lead">Ringkasan yang diambil langsung dari publikasi BPS. Kecamatan Lembang terdiri dari 16 desa dengan luas wilayah 97,97 km². Secara geografis berbatasan dengan Kabupaten Subang di utara; Kabupaten Bandung dan Kota Bandung di selatan; Kabupaten Sumedang di timur; dan Kecamatan Parongpong di barat.</p>
+        <div class="bps-grid">
+          <div class="bps-stat"><div class="n">16</div><small>Desa</small></div>
+          <div class="bps-stat"><div class="n">97,97 km²</div><small>Luas Kecamatan 2025</small></div>
+          <div class="bps-stat"><div class="n">209.084</div><small>Penduduk 2024</small></div>
+          <div class="bps-stat"><div class="n">103,18</div><small>Rasio Jenis Kelamin 2024</small></div>
+          <div class="bps-stat"><div class="n">227</div><small>RW</small></div>
+          <div class="bps-stat"><div class="n">882</div><small>RT</small></div>
+          <div class="bps-stat"><div class="n">17</div><small>PNS Pemerintah Kecamatan 2024</small></div>
+          <div class="bps-stat"><div class="n">15</div><small>Koperasi aktif</small></div>
+        </div>
+      </div>
+
+      <div class="bps-card">
+        <h2>Geografi & Administrasi</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Luas dan persentase wilayah, 2025</caption><thead><tr><th>Desa</th><th>Luas (km²)</th><th>% Kecamatan</th></tr></thead><tbody id="areaTable"></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Jarak ke ibu kota, 2025</caption><thead><tr><th>Desa</th><th>Ke ibu kota kecamatan</th><th>Ke ibu kota kabupaten/kota</th></tr></thead><tbody id="distanceTable"></tbody></table></div>
+        </div>
+        <p class="bps-note">Sumber jarak: BPS, Pendataan Potensi Desa (Podes) 2021. Sumber luas: BPS Kabupaten Bandung Barat.</p>
+      </div>
+
+      <div class="bps-card">
+        <h2>Pemerintahan & Kependudukan</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>RW dan RT menurut desa, 2025</caption><thead><tr><th>Desa</th><th>RW</th><th>RT</th></tr></thead><tbody id="rwrtTable"></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Penduduk menurut desa, 2024</caption><thead><tr><th>Desa</th><th>Laki-laki</th><th>Perempuan</th><th>Total</th><th>Kepadatan</th><th>Sex ratio</th></tr></thead><tbody id="popTable"></tbody></table></div>
+        </div>
+        <p class="bps-note">Sumber penduduk: Disdukcapil, Data Adminduk Semester 2 Tahun 2024. Sumber RW/RT: MFD Semester 2 Tahun 2024.</p>
+        <div class="bps-table-wrap" style="margin-top:16px"><table class="bps-table"><caption>Jumlah PNS Pemerintah Kecamatan Lembang menurut golongan, 2022–2024</caption><thead><tr><th>Golongan</th><th>2022</th><th>2023</th><th>2024</th></tr></thead><tbody><tr><td>I</td><td>1</td><td>1</td><td>1</td></tr><tr><td>II</td><td>4</td><td>4</td><td>1</td></tr><tr><td>III</td><td>16</td><td>16</td><td>13</td></tr><tr><td>IV</td><td>2</td><td>2</td><td>2</td></tr><tr><td><strong>Total PNS</strong></td><td><strong>23</strong></td><td><strong>23</strong></td><td><strong>17</strong></td></tr></tbody></table></div>
+      </div>
+
+      <div class="bps-card">
+        <h2>Pendidikan</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Jumlah sekolah, 2022–2024</caption><thead><tr><th>Jenjang</th><th>2022</th><th>2023</th><th>2024</th></tr></thead><tbody>
+          <tr><td>TK</td><td>36</td><td>36</td><td>36</td></tr><tr><td>RA</td><td>10</td><td>13</td><td>13</td></tr><tr><td>SD</td><td>47</td><td>71</td><td>71</td></tr><tr><td>MI</td><td>4</td><td>4</td><td>4</td></tr><tr><td>SMP</td><td>17</td><td>28</td><td>29</td></tr><tr><td>MTs</td><td>8</td><td>8</td><td>8</td></tr><tr><td>SMA</td><td>9</td><td>7</td><td>7</td></tr><tr><td>SMK</td><td>6</td><td>6</td><td>6</td></tr><tr><td>MA</td><td>4</td><td>4</td><td>4</td></tr><tr><td>Akademi/Perguruan Tinggi</td><td>1</td><td>1</td><td>1</td></tr></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Guru dan murid, 2023/2024–2024/2025</caption><thead><tr><th>Jenjang</th><th>Guru 23/24</th><th>Guru 24/25</th><th>Murid 23/24</th><th>Murid 24/25</th></tr></thead><tbody>
+          <tr><td>TK</td><td>123</td><td>131</td><td>1.601</td><td>1.644</td></tr><tr><td>RA</td><td>131</td><td>122</td><td>1.181</td><td>1.261</td></tr><tr><td>SD</td><td>756</td><td>790</td><td>3.983</td><td>4.186</td></tr><tr><td>MI</td><td>91</td><td>96</td><td>1.595</td><td>1.660</td></tr><tr><td>SMP</td><td>440</td><td>437</td><td>7.949</td><td>8.338</td></tr><tr><td>MTs</td><td>148</td><td>145</td><td>1.906</td><td>1.846</td></tr><tr><td>SMA</td><td>225</td><td>224</td><td>3.958</td><td>3.942</td></tr><tr><td>SMK</td><td>223</td><td>224</td><td>4.844</td><td>4.805</td></tr><tr><td>MA</td><td>21</td><td>21</td><td>78</td><td>…</td></tr></tbody></table></div>
+        </div>
+        <p class="bps-note">Sumber: Kementerian Pendidikan Dasar dan Menengah (Dapodik) dan Kementerian Agama (EMIS), data semester genap.</p>
+      </div>
+
+      <div class="bps-card">
+        <h2>Kesehatan, Perumahan & Lingkungan</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Desa yang memiliki sarana kesehatan, 2022–2024</caption><thead><tr><th>Sarana</th><th>2022</th><th>2023</th><th>2024</th></tr></thead><tbody>
+          <tr><td>Rumah Sakit Umum</td><td>0</td><td>1</td><td>1</td></tr><tr><td>Puskesmas</td><td>4</td><td>4</td><td>4</td></tr><tr><td>Puskesmas Pembantu</td><td>5</td><td>5</td><td>5</td></tr><tr><td>Poliklinik/Balai Pengobatan</td><td>11</td><td>11</td><td>11</td></tr><tr><td>Apotek</td><td>16</td><td>16</td><td>16</td></tr><tr><td>Posyandu</td><td>16</td><td>16</td><td>16</td></tr><tr><td>Toko Obat</td><td>16</td><td>16</td><td>16</td></tr><tr><td>Balai Pengobatan Masyarakat Yayasan Swasta</td><td>16</td><td>16</td><td>16</td></tr><tr><td>Rumah/Kantor Praktik Dokter</td><td>16</td><td>16</td><td>16</td></tr><tr><td>Rumah Bersalin</td><td>16</td><td>16</td><td>16</td></tr></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Penerangan jalan utama dan bahan bakar memasak</caption><thead><tr><th>Indikator</th><th>2024</th></tr></thead><tbody><tr><td>Listrik pemerintah</td><td>16 desa</td></tr><tr><td>Listrik non-pemerintah</td><td>0 desa</td></tr><tr><td>Non listrik</td><td>0 desa</td></tr><tr><td>Elpiji 3 kg sebagai bahan bakar utama</td><td>16 desa</td></tr><tr><td>Bahan bakar lain</td><td>0 desa</td></tr></tbody></table></div>
+        </div>
+        <p class="bps-note">Sumber: BPS, Pendataan Potensi Desa (Podes).</p>
+      </div>
+
+      <div class="bps-card">
+        <h2>Bencana Alam & Mitigasi, 2024</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Desa yang mengalami kejadian bencana</caption><thead><tr><th>Jenis</th><th>Jumlah desa</th></tr></thead><tbody><tr><td>Gempa bumi</td><td>5</td></tr><tr><td>Tsunami</td><td>0</td></tr><tr><td>Gunung meletus</td><td>0</td></tr><tr><td>Tanah longsor</td><td>16</td></tr><tr><td>Banjir</td><td>3</td></tr><tr><td>Banjir bandang</td><td>6</td></tr><tr><td>Kekeringan</td><td>0</td></tr><tr><td>Kebakaran hutan/lahan</td><td>0</td></tr><tr><td>Angin puyuh/puting beliung/topan</td><td>0</td></tr><tr><td>Gelombang pasang</td><td>0</td></tr><tr><td>Abrasi</td><td>0</td></tr></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Desa dengan korban jiwa & fasilitas mitigasi</caption><thead><tr><th>Indikator</th><th>Jumlah desa</th></tr></thead><tbody><tr><td>Korban jiwa akibat gempa</td><td>5</td></tr><tr><td>Korban jiwa akibat longsor</td><td>13</td></tr><tr><td>Korban jiwa akibat banjir</td><td>6</td></tr><tr><td>Korban jiwa akibat banjir bandang</td><td>3</td></tr><tr><td>Sistem peringatan dini bencana</td><td>11</td></tr><tr><td>Perlengkapan keselamatan</td><td>11</td></tr><tr><td>Rambu & jalur evakuasi</td><td>11</td></tr><tr><td>Normalisasi sungai/kanal/tanggul/drainase/waduk/dll.</td><td>12</td></tr></tbody></table></div>
+        </div>
+        <p class="bps-note">Tabel korban jiwa berlaku periode Januari–April 2024. Sumber: BPS, Podes.</p>
+      </div>
+
+      <div class="bps-card">
+        <h2>Pertanian</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Luas panen tanaman sayuran/buah semusim (ha), 2023–2024</caption><thead><tr><th>Tanaman</th><th>2023</th><th>2024</th></tr></thead><tbody>
+          <tr><td>Buncis</td><td>88</td><td>71</td></tr><tr><td>Cabai rawit</td><td>116</td><td>113</td></tr><tr><td>Kembang kol</td><td>81</td><td>41</td></tr><tr><td>Kentang</td><td>44</td><td>42</td></tr><tr><td>Kubis</td><td>94</td><td>63</td></tr><tr><td>Tomat</td><td>110</td><td>74</td></tr><tr><td>Cabai besar/TW/Teropong</td><td>83</td><td>78</td></tr><tr><td>Cabai keriting</td><td>99</td><td>92</td></tr><tr><td>Bawang daun</td><td>–</td><td>3</td></tr><tr><td>Bayam</td><td>–</td><td>4</td></tr><tr><td>Ketimun</td><td>–</td><td>3</td></tr><tr><td>Labu siam</td><td>–</td><td>2</td></tr><tr><td>Paprika</td><td>–</td><td>1</td></tr><tr><td>Petsai/sawi</td><td>–</td><td>7</td></tr><tr><td>Terung</td><td>–</td><td>4</td></tr><tr><td>Stroberi</td><td>…</td><td>…</td></tr></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Produksi tanaman sayuran/buah semusim (kuintal), 2023–2024</caption><thead><tr><th>Tanaman</th><th>2023</th><th>2024</th></tr></thead><tbody>
+          <tr><td>Buncis</td><td>20.621</td><td>11.225</td></tr><tr><td>Cabai rawit</td><td>17.006</td><td>18.990</td></tr><tr><td>Kembang kol</td><td>15.400</td><td>7.962</td></tr><tr><td>Kentang</td><td>8.710</td><td>11.196</td></tr><tr><td>Kubis</td><td>21.165</td><td>4.610</td></tr><tr><td>Tomat</td><td>29.985</td><td>16.900</td></tr><tr><td>Cabai besar/TW/Teropong</td><td>14.275</td><td>18.565</td></tr><tr><td>Cabai keriting</td><td>11.740</td><td>15.290</td></tr><tr><td>Stroberi</td><td>1.050</td><td>15</td></tr><tr><td>Bawang daun</td><td>–</td><td>15</td></tr><tr><td>Bayam</td><td>–</td><td>210</td></tr><tr><td>Ketimun</td><td>–</td><td>30</td></tr><tr><td>Labu siam</td><td>–</td><td>20</td></tr><tr><td>Paprika</td><td>–</td><td>15</td></tr><tr><td>Petsai/sawi</td><td>–</td><td>350</td></tr><tr><td>Terung</td><td>–</td><td>40</td></tr></tbody></table></div>
+        </div>
+        <div class="bps-table-wrap" style="margin-top:16px"><table class="bps-table"><caption>Biofarmaka dan tanaman hias, 2023–2024</caption><thead><tr><th>Tanaman</th><th>2023</th><th>2024</th><th>Satuan</th></tr></thead><tbody>
+        <tr><td>Lidah buaya</td><td>80</td><td>50</td><td>m² luas panen</td></tr><tr><td>Serai</td><td>300</td><td>170</td><td>m² luas panen</td></tr><tr><td>Lidah buaya</td><td>2.450</td><td>137</td><td>kg produksi</td></tr><tr><td>Serai</td><td>9.400</td><td>1.140</td><td>kg produksi</td></tr><tr><td>Anthurium</td><td>2.100</td><td>1.600</td><td>m² luas panen</td></tr><tr><td>Herbras/Gerbera</td><td>550</td><td>450</td><td>m² luas panen</td></tr><tr><td>Krisan</td><td>1.020</td><td>1.240</td><td>m² luas panen</td></tr><tr><td>Mawar</td><td>52.800</td><td>23.100</td><td>m² luas panen</td></tr><tr><td>Anggrek pot</td><td>15.850</td><td>13.600</td><td>m² luas panen</td></tr><tr><td>Bromelia</td><td>900</td><td>2.050</td><td>m² luas panen</td></tr><tr><td>Anthurium</td><td>49.000</td><td>22.600</td><td>pohon produksi</td></tr><tr><td>Herbras/Gerbera</td><td>24.450</td><td>7.500</td><td>tangkai produksi</td></tr><tr><td>Krisan</td><td>10.200</td><td>10.300</td><td>tangkai produksi</td></tr><tr><td>Mawar</td><td>1.299.000</td><td>548.750</td><td>tangkai produksi</td></tr><tr><td>Anggrek pot</td><td>98.500</td><td>156.000</td><td>pohon produksi</td></tr><tr><td>Bromelia</td><td>4.500</td><td>27.550</td><td>pohon produksi</td></tr></tbody></table></div>
+        <p class="bps-note">Sumber: BPS, Statistik Pertanian Hortikultura SPH-SBS, SPH-TBF, dan SPH-TH.</p>
+      </div>
+
+      <div class="bps-card">
+        <h2>Pariwisata, Transportasi & Komunikasi</h2>
+        <div class="bps-grid">
+          <div class="bps-stat"><div class="n">11</div><small>Desa memiliki hotel, 2024</small></div>
+          <div class="bps-stat"><div class="n">15</div><small>Desa memiliki penginapan, 2024</small></div>
+          <div class="bps-stat"><div class="n">16</div><small>Desa menggunakan transportasi darat</small></div>
+          <div class="bps-stat"><div class="n">1</div><small>Desa memiliki kantor pos/pos pembantu/rumah pos</small></div>
+          <div class="bps-stat"><div class="n">4</div><small>Desa memiliki perusahaan/agen ekspedisi swasta</small></div>
+        </div>
+        <p class="bps-note">BPS mencatat hanya transportasi darat antardesa/kelurahan pada 2024; transportasi air, darat-air, dan udara bernilai 0. Pos keliling tercatat –.</p>
+      </div>
+
+      <div class="bps-card">
+        <h2>Perbankan, Koperasi & Perdagangan</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Fasilitas bank dan koperasi aktif, 2024</caption><thead><tr><th>Jenis</th><th>Jumlah desa/unit</th></tr></thead><tbody><tr><td>Bank umum pemerintah</td><td>10</td></tr><tr><td>Bank umum swasta</td><td>5</td></tr><tr><td>Bank Perkreditan Rakyat (BPR)</td><td>4</td></tr><tr><td>Koperasi Unit Desa (KUD)</td><td>4</td></tr><tr><td>Kopinkra</td><td>3</td></tr><tr><td>Koperasi simpan pinjam</td><td>5</td></tr><tr><td>Koperasi lainnya</td><td>3</td></tr></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Sarana perdagangan, 2024</caption><thead><tr><th>Jenis</th><th>Jumlah</th></tr></thead><tbody><tr><td>Kelompok pertokoan</td><td>24</td></tr><tr><td>Pasar bangunan permanen</td><td>3</td></tr><tr><td>Pasar bangunan semi permanen</td><td>0</td></tr><tr><td>Pasar tanpa bangunan</td><td>1</td></tr><tr><td>Minimarket/swalayan/supermarket</td><td>41</td></tr><tr><td>Restoran/rumah makan</td><td>166</td></tr></tbody></table></div>
+        </div>
+        <p class="bps-note">Sumber: BPS, Pendataan Potensi Desa (Podes).</p>
+      </div>
+
+      <div class="bps-card">
+        <h2>Sumber & Metadata Publikasi</h2>
+        <p class="lead">Publikasi yang digunakan adalah <strong>Kecamatan Lembang Dalam Angka 2025</strong>, Volume XV, Katalog 1102001.3217120, Nomor Publikasi 32170.25017, terbit September 2025. Publikasi berisi xxiii+81 halaman dan disusun BPS Kabupaten Bandung Barat.</p>
+        <p class="bps-note">Kontributor data dalam publikasi: Kementerian Agama, Kementerian Pendidikan dan Kebudayaan, BPS, dan Kantor Kecamatan Lembang. Setiap tabel di atas mempertahankan tahun dan sumber sebagaimana dicantumkan dalam PDF. Tanda “–” berarti tidak ada/nol, sedangkan “…” berarti data tidak tersedia.</p>
+        <div class="bps-source-links">
+          <a href="https://bandungbaratkab.bps.go.id" target="_blank" rel="noopener">BPS Kabupaten Bandung Barat</a>
+          <a href="https://bandungbaratkab.bps.go.id/id/publication/2025/09/26/90c1a6c15e3286a9007dd3a4/kecamatan-lembang-dalam-angka-2025.html" target="_blank" rel="noopener">Publikasi BPS Lembang 2025</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="source"><strong>Sumber utama:</strong> BPS Kabupaten Bandung Barat, <em>Kecamatan Lembang Dalam Angka 2025</em>, Volume XV, Katalog 1102001.3217120, Nomor Publikasi 32170.25017. Foto desa pada kartu digunakan sebagai ilustrasi visual, bukan statistik BPS.</div>
+  </main>
+</section>
+
+<section id="detailPage" class="page detail-page">
+  <main class="container">
+    <button class="back-btn" onclick="showList()">←&nbsp; Kembali ke Daftar Desa</button>
+    <div class="detail-layout">
+      <div>
+        <div class="detail-main hero-detail"><div class="hero-content"><img id="detailImage" src="" alt=""><div class="hero-text"><h1 id="detailName"></h1><div class="district">Kecamatan <span id="detailDistrict"></span>, Kabupaten Bandung Barat</div><p id="detailDescription"></p><div class="detail-description-note">Data statistik desa mengikuti tabel BPS yang tersedia; data yang tidak ada dalam publikasi tidak diisi.</div></div></div></div>
+        <div class="detail-main detail-card"><h2>Informasi Umum Desa</h2><div class="general-grid"><div class="general-col"><div class="data-line"><b>Luas Wilayah 2025</b><span>:</span><span id="area"></span></div><div class="data-line"><b>Persentase Wilayah</b><span>:</span><span id="areaPct"></span></div><div class="data-line"><b>Penduduk 2024</b><span>:</span><span id="population"></span></div><div class="data-line"><b>Laki-laki</b><span>:</span><span id="male"></span></div><div class="data-line"><b>Perempuan</b><span>:</span><span id="female"></span></div><div class="data-line"><b>Kepadatan</b><span>:</span><span id="density"></span></div></div><div class="general-col"><div class="data-line"><b>Rasio Jenis Kelamin</b><span>:</span><span id="sexRatio"></span></div><div class="data-line"><b>RW</b><span>:</span><span id="rw"></span></div><div class="data-line"><b>RT</b><span>:</span><span id="rt"></span></div><div class="data-line"><b>Kode Desa</b><span>:</span><span id="code"></span></div><div class="data-line"><b>Jarak ke Ibukota Kecamatan</b><span>:</span><span id="distDistrict"></span></div><div class="data-line"><b>Jarak ke Ibukota Kabupaten/Kota</b><span>:</span><span id="distRegency"></span></div></div></div></div>
+        <div class="detail-main detail-card"><h2>Statistik Desa dari BPS</h2><div class="village-extra-grid"><div class="mini"><b id="miniPop"></b><small>Penduduk 2024</small></div><div class="mini"><b id="miniDensity"></b><small>Kepadatan penduduk</small></div><div class="mini"><b id="miniRWRT"></b><small>RW / RT</small></div><div class="mini"><b id="miniArea"></b><small>Luas wilayah 2025</small></div></div><p class="bps-note">Penduduk bersumber dari Disdukcapil, Data Adminduk Semester 2 Tahun 2024; luas dari BPS Kabupaten Bandung Barat; RW/RT dari MFD Semester 2 Tahun 2024; jarak dari Podes 2021.</p></div>
+        <div class="detail-main detail-card"><h2>Potensi & Statistik Kecamatan Lembang</h2><p style="margin:0;line-height:1.75;color:#45566d">Publikasi BPS menunjukkan Lembang memiliki aktivitas pertanian hortikultura yang kuat, termasuk sayuran, stroberi, tanaman biofarmaka, dan tanaman hias. Data ini merupakan statistik <strong>tingkat Kecamatan Lembang</strong>, bukan klaim khusus untuk setiap desa.</p><div class="potential-grid" style="margin-top:18px"><div class="potential"><div class="icon">🌱</div><strong>Hortikultura</strong><small>Sayuran dan buah semusim tercatat pada tabel pertanian 2023–2024.</small></div><div class="potential"><div class="icon">🌸</div><strong>Tanaman Hias</strong><small>Mawar, anggrek, krisan, anthurium, bromelia, dan herbras.</small></div><div class="potential"><div class="icon">🏨</div><strong>Pariwisata</strong><small>11 desa memiliki hotel dan 15 desa memiliki penginapan pada 2024.</small></div><div class="potential"><div class="icon">🏪</div><strong>Perdagangan</strong><small>24 kelompok pertokoan, 3 pasar permanen, 41 minimarket, dan 166 restoran.</small></div></div></div>
+        <div class="detail-main detail-card"><h2>Galeri Desa</h2><div id="gallery" class="gallery-grid"></div></div>
+      </div>
+      <aside class="sidebar"><div class="sidebar-card"><h2>Peta Wilayah <span id="mapName"></span></h2><div class="map"><div class="pin">📍</div></div><a id="mapsLink" class="map-btn" href="#" target="_blank">Lihat di Google Maps ↗</a></div><div class="sidebar-card"><h2>Statistik Desa</h2><div class="stats"><div class="stat"><div class="big" id="statPop"></div><small>Jumlah Penduduk</small></div><div class="stat"><div class="big" id="statArea"></div><small>Luas Wilayah</small></div><div class="stat"><div class="big" id="statDensity"></div><small>Kepadatan</small></div><div class="stat"><div class="big" id="statSex"></div><small>Sex Ratio</small></div></div></div><div class="sidebar-card contact"><h2>Data Kontak</h2><p>Informasi alamat, telepon, email kepala desa, dan jumlah KK/dusun <strong>tidak dicantumkan dalam publikasi BPS ini</strong>, sehingga tidak diisi dengan data perkiraan.</p></div><div class="sidebar-card source-box"><h2>Sumber Data</h2>BPS Kabupaten Bandung Barat<br><span id="sourcePublication"></span></div></aside>
+    </div>
+    <div class="notice">ⓘ &nbsp; Data desa di halaman ini mengikuti publikasi <strong>Kecamatan Lembang Dalam Angka 2025</strong>. Tahun data dapat berbeda antar tabel, sesuai keterangan BPS.</div>
+  </main>
+</section>
+
+<script>
+const images = {
+  sukajaya:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85",cibogo:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85",cikahuripan:"https://cdn.ayobandung.id/fill/1200%3A0/medias/2025/Nov/13/puncak-upas-hill-via-cikahuripan.jpg",cikidang:"https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=900&q=85",cikole:"https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85",gudangkahuripan:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",jayagiri:"https://cdn.antaranews.com/cache/1200x800/2019/05/24/Desa-Jayagiri_Bandung-Barat.jpg",kayuambon:"https://minweb.unikom.ac.id/wp-content/uploads/2025/11/WhatsApp-Image-2025-10-27-at-15.19.13_5b9962dd.jpg",langensari:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85",lembang:"https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=900&q=85",mekarwangi:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85",pagerwangi:"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=900&q=85",cibodas:"https://images.unsplash.com/photo-1596402184320-417e7178b2cd?auto=format&fit=crop&w=900&q=85",suntenjaya:"https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85",wangunharja:"https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85",wangunsari:"https://jurnalpolisi.co.id/wp-content/uploads/2025/06/IMG-20250621-WA0001-2.jpg"
+};
+const districtOptions=[{value:'lembang',label:'LEMBANG',target:'lembang.html'},{value:'parongpong',label:'PARONGPONG',target:'kecamatan-detail.html?kecamatan=parongpong'},{value:'cisarua',label:'CISARUA',target:'kecamatan-detail.html?kecamatan=cisarua'},{value:'cikalongwetan',label:'CIKALONGWETAN',target:'kecamatan-detail.html?kecamatan=cikalongwetan'},{value:'cipeundeuy',label:'CIPEUNDEUY',target:'kecamatan-detail.html?kecamatan=cipeundeuy'},{value:'ngamprah',label:'NGAMPRAH',target:'kecamatan-detail.html?kecamatan=ngamprah'},{value:'cipatat',label:'CIPATAT',target:'kecamatan-detail.html?kecamatan=cipatat'},{value:'padalarang',label:'PADALARANG',target:'kecamatan-detail.html?kecamatan=padalarang'},{value:'batujajar',label:'BATUJAJAR',target:'kecamatan-detail.html?kecamatan=batujajar'},{value:'cihampelas',label:'CIHAMPELAS',target:'kecamatan-detail.html?kecamatan=cihampelas'},{value:'cililin',label:'CILILIN',target:'kecamatan-detail.html?kecamatan=cililin'},{value:'cipongkor',label:'CIPONGKOR',target:'kecamatan-detail.html?kecamatan=cipongkor'},{value:'rongga',label:'RONGGA',target:'kecamatan-detail.html?kecamatan=rongga'},{value:'sindangkerta',label:'SINDANGKERTA',target:'kecamatan-detail.html?kecamatan=sindangkerta'},{value:'gununghalu',label:'GUNUNGHALU',target:'kecamatan-detail.html?kecamatan=gununghalu'},{value:'saguling',label:'SAGULING',target:'kecamatan-detail.html?kecamatan=saguling'}];
+const villages = [
+  {name:"Desa Gudangkahuripan",key:"gudangkahuripan",area:"2,23 km²",areaPct:"2,27%",distDistrict:"5,9 km",distRegency:"28,5 km",rw:"15",rt:"58",male:"7.636",female:"7.414",pop:"15.050 jiwa",popPct:"7,20%",density:"6.764 jiwa/km²",sexRatio:"102,99",code:"32.17.01.2007"},
+  {name:"Desa Wangunsari",key:"wangunsari",area:"3,18 km²",areaPct:"3,25%",distDistrict:"6,9 km",distRegency:"32,4 km",rw:"15",rt:"56",male:"7.020",female:"6.726",pop:"13.746 jiwa",popPct:"6,57%",density:"4.322 jiwa/km²",sexRatio:"104,37",code:"32.17.01.2016"},
+  {name:"Desa Pagerwangi",key:"pagerwangi",area:"5,92 km²",areaPct:"6,04%",distDistrict:"4,4 km",distRegency:"29,9 km",rw:"14",rt:"68",male:"6.160",female:"5.811",pop:"11.971 jiwa",popPct:"5,73%",density:"2.023 jiwa/km²",sexRatio:"106,01",code:"32.17.01.2001"},
+  {name:"Desa Mekarwangi",key:"mekarwangi",area:"3,65 km²",areaPct:"3,72%",distDistrict:"5,4 km",distRegency:"30,9 km",rw:"11",rt:"45",male:"3.231",female:"3.149",pop:"6.380 jiwa",popPct:"3,05%",density:"1.749 jiwa/km²",sexRatio:"102,60",code:"32.17.01.2011"},
+  {name:"Desa Langensari",key:"langensari",area:"4,73 km²",areaPct:"4,83%",distDistrict:"1,9 km",distRegency:"27,4 km",rw:"16",rt:"54",male:"8.082",female:"7.611",pop:"15.693 jiwa",popPct:"7,51%",density:"3.316 jiwa/km²",sexRatio:"106,19",code:"32.17.01.2010"},
+  {name:"Desa Kayuambon",key:"kayuambon",area:"2,12 km²",areaPct:"2,16%",distDistrict:"0 km",distRegency:"25,5 km",rw:"13",rt:"37",male:"5.049",female:"4.962",pop:"10.011 jiwa",popPct:"4,79%",density:"4.726 jiwa/km²",sexRatio:"101,75",code:"32.17.01.2002"},
+  {name:"Desa Lembang",key:"lembang",area:"3,23 km²",areaPct:"3,30%",distDistrict:"2,4 km",distRegency:"23,6 km",rw:"16",rt:"61",male:"8.482",female:"8.400",pop:"16.882 jiwa",popPct:"8,07%",density:"5.223 jiwa/km²",sexRatio:"100,98",code:"32.17.01.2003"},
+  {name:"Desa Cikahuripan",key:"cikahuripan",area:"8,51 km²",areaPct:"8,69%",distDistrict:"5,7 km",distRegency:"19,8 km",rw:"10",rt:"58",male:"7.054",female:"6.623",pop:"13.677 jiwa",popPct:"6,54%",density:"1.607 jiwa/km²",sexRatio:"106,51",code:"32.17.01.2005"},
+  {name:"Desa Sukajaya",key:"sukajaya",area:"2,68 km²",areaPct:"2,74%",distDistrict:"6,4 km",distRegency:"19,6 km",rw:"16",rt:"53",male:"7.389",female:"7.246",pop:"14.635 jiwa",popPct:"7,00%",density:"5.455 jiwa/km²",sexRatio:"101,97",code:"32.17.01.2013"},
+  {name:"Desa Jayagiri",key:"jayagiri",area:"9,59 km²",areaPct:"9,79%",distDistrict:"2,5 km",distRegency:"23,0 km",rw:"19",rt:"75",male:"10.525",female:"10.188",pop:"20.713 jiwa",popPct:"9,91%",density:"2.161 jiwa/km²",sexRatio:"103,31",code:"32.17.01.2008"},
+  {name:"Desa Cibogo",key:"cibogo",area:"3,84 km²",areaPct:"3,92%",distDistrict:"3,5 km",distRegency:"29,0 km",rw:"13",rt:"46",male:"7.048",female:"6.874",pop:"13.922 jiwa",popPct:"6,66%",density:"3.621 jiwa/km²",sexRatio:"102,53",code:"32.17.01.2012"},
+  {name:"Desa Cikole",key:"cikole",area:"8,00 km²",areaPct:"8,17%",distDistrict:"5,5 km",distRegency:"31,0 km",rw:"15",rt:"68",male:"7.708",female:"7.615",pop:"15.323 jiwa",popPct:"7,33%",density:"1.915 jiwa/km²",sexRatio:"101,22",code:"32.17.01.2006"},
+  {name:"Desa Cikidang",key:"cikidang",area:"10,31 km²",areaPct:"10,53%",distDistrict:"7,8 km",distRegency:"33,3 km",rw:"11",rt:"48",male:"4.686",female:"4.596",pop:"9.282 jiwa",popPct:"4,44%",density:"900 jiwa/km²",sexRatio:"101,96",code:"32.17.01.2004"},
+  {name:"Desa Wangunharja",key:"wangunharja",area:"8,27 km²",areaPct:"8,44%",distDistrict:"7,6 km",distRegency:"33,1 km",rw:"9",rt:"39",male:"4.738",female:"4.631",pop:"9.369 jiwa",popPct:"4,48%",density:"1.133 jiwa/km²",sexRatio:"102,31",code:"32.17.01.2015"},
+  {name:"Desa Cibodas",key:"cibodas",area:"8,08 km²",areaPct:"8,24%",distDistrict:"6,3 km",distRegency:"31,8 km",rw:"17",rt:"66",male:"6.588",female:"6.486",pop:"13.074 jiwa",popPct:"6,25%",density:"1.619 jiwa/km²",sexRatio:"101,57",code:"32.17.01.2009"},
+  {name:"Desa Suntenjaya",key:"suntenjaya",area:"13,63 km²",areaPct:"13,91%",distDistrict:"7,1 km",distRegency:"32,6 km",rw:"17",rt:"50",male:"4.782",female:"4.574",pop:"9.356 jiwa",popPct:"4,47%",density:"686 jiwa/km²",sexRatio:"104,55",code:"32.17.01.2014"}
+];
+let selectedDistrict='lembang';
+function renderDistrictOptions(){const list=document.getElementById('districtOptions'),search=document.getElementById('districtSearch'),valueLabel=document.querySelector('.custom-select__value');if(!list||!search||!valueLabel)return;const q=search.value.trim().toLowerCase();const filtered=districtOptions.filter(x=>x.label.toLowerCase().includes(q));list.innerHTML=filtered.map(x=>`<li class="custom-select__option ${x.value===selectedDistrict?'is-selected':''}" data-value="${x.value}">${x.label}</li>`).join('');const current=districtOptions.find(x=>x.value===selectedDistrict)||districtOptions[0];valueLabel.textContent=current.label;list.querySelectorAll('.custom-select__option').forEach(o=>o.onclick=()=>selectDistrict(o.dataset.value));}
+function toggleDistrictSelect(force){const s=document.getElementById('districtSelect'),t=document.querySelector('.custom-select__trigger');if(!s||!t)return;const open=typeof force==='boolean'?force:!s.classList.contains('open');s.classList.toggle('open',open);t.setAttribute('aria-expanded',String(open));if(open)setTimeout(()=>document.getElementById('districtSearch')?.focus(),50)}
+function selectDistrict(v){selectedDistrict=v;renderDistrictOptions();toggleDistrictSelect(false);const d=districtOptions.find(x=>x.value===v);if(d?.target)window.location.href=d.target;}
+function renderVillages(){const grid=document.getElementById('villageGrid');grid.innerHTML=villages.map(v=>`<article class="village-card"><img src="${images[v.key]||images.sukajaya}" alt="${v.name}" onerror="this.onerror=null;this.src=images.sukajaya"><div class="card-body"><h3>${v.name}</h3><div class="info-row"><span>Luas Wilayah</span><b>${v.area}</b></div><div class="info-row"><span>Penduduk 2024</span><b>${v.pop}</b></div><button class="detail-btn" onclick="openDetail('${v.key}')">Lihat Detail</button></div></article>`).join('');}
+function fillTables(){document.getElementById('areaTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.area.replace(' km²','')}</td><td class="num">${v.areaPct}</td></tr>`).join('');document.getElementById('distanceTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.distDistrict}</td><td class="num">${v.distRegency}</td></tr>`).join('');document.getElementById('rwrtTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.rw}</td><td class="num">${v.rt}</td></tr>`).join('');document.getElementById('popTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.male}</td><td class="num">${v.female}</td><td class="num">${v.pop.replace(' jiwa','')}</td><td class="num">${v.density.replace(' jiwa/km²','')}</td><td class="num">${v.sexRatio}</td></tr>`).join('');}
+function openDetail(key){const v=villages.find(x=>x.key===key);if(!v)return;document.getElementById('listPage').classList.remove('active');document.getElementById('detailPage').classList.add('active');document.getElementById('detailImage').src=images[v.key]||images.sukajaya;document.getElementById('detailImage').alt=v.name;document.getElementById('detailName').textContent=v.name;document.getElementById('detailDistrict').textContent='Lembang';document.getElementById('detailDescription').textContent=`${v.name} berada di Kecamatan Lembang, Kabupaten Bandung Barat. Ringkasan statistik pada halaman ini mengikuti data BPS yang tersedia untuk desa tersebut.`;for(const id of ['area','areaPct','population','male','female','density','sexRatio','rw','rt','code','distDistrict','distRegency'])document.getElementById(id).textContent=v[id==='population'?'pop':id];document.getElementById('miniPop').textContent=v.pop;document.getElementById('miniDensity').textContent=v.density;document.getElementById('miniRWRT').textContent=`${v.rw} / ${v.rt}`;document.getElementById('miniArea').textContent=v.area;document.getElementById('statPop').textContent=v.pop.replace(' jiwa','');document.getElementById('statArea').textContent=v.area;document.getElementById('statDensity').textContent=v.density.replace(' jiwa/km²','');document.getElementById('statSex').textContent=v.sexRatio;document.getElementById('mapName').textContent=v.name;document.getElementById('mapsLink').href=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.name+' Lembang Bandung Barat')}`;document.getElementById('sourcePublication').textContent='Kecamatan Lembang Dalam Angka 2025, Nomor Publikasi 32170.25017, Katalog 1102001.3217120';document.getElementById('gallery').innerHTML=[v.key,'jayagiri','lembang','cikahuripan'].map(k=>`<img src="${images[k]||images.sukajaya}" alt="Galeri ${v.name}" onerror="this.style.display='none'">`).join('');window.scrollTo({top:0,behavior:'auto'});}
+function showList(){document.getElementById('detailPage').classList.remove('active');document.getElementById('listPage').classList.add('active');window.scrollTo({top:0,behavior:'auto'});}
+function backToKecamatan(){window.location.href='kecamatan.html';}
+document.addEventListener('click',e=>{const s=document.getElementById('districtSelect');if(s&&!s.contains(e.target))toggleDistrictSelect(false)});document.querySelector('.custom-select__trigger')?.addEventListener('click',()=>toggleDistrictSelect());document.getElementById('districtSearch')?.addEventListener('input',renderDistrictOptions);document.getElementById('districtSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter'){const x=document.querySelector('#districtOptions .custom-select__option');if(x)selectDistrict(x.dataset.value)}});
+renderDistrictOptions();renderVillages();fillTables();
+</script>
+</body>
+</html>
