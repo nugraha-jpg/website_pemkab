@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Desa Kecamatan Parongpong - BPS 2025</title>
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:Inter,Segoe UI,Arial,Helvetica,sans-serif;background:#f3f7fc;color:#172a46}
+body{overflow-x:hidden}
+button,select{font:inherit}
+.page{display:none;min-height:100vh}.page.active{display:block}
+.container{width:min(1440px,94%);margin:auto}
+.list-page{position:relative;padding:26px 0 60px;background:linear-gradient(180deg,#edf6ff 0,#f6f9fd 430px,#f3f7fc 100%);min-height:100vh}
+.list-page:before{content:"";position:absolute;left:0;right:0;top:0;height:285px;pointer-events:none;background:radial-gradient(circle at 82% 12%,rgba(255,208,77,.28) 0 34px,transparent 35px),radial-gradient(circle at 68% 30%,rgba(255,255,255,.7) 0 2px,transparent 3px);opacity:.95}
+.list-page .container{position:relative;z-index:1}
+.back-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;background:rgba(255,255,255,.92);border:1px solid #d5e1ef;border-radius:9px;color:#06458f;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(31,74,119,.09);margin-bottom:24px;transition:.2s}.back-btn:hover{transform:translateY(-1px);background:#fff;box-shadow:0 9px 22px rgba(31,74,119,.13)}
+.list-title{margin:0;font-size:37px;line-height:1.15;color:#0b3978;letter-spacing:-.6px;max-width:760px}.list-title:after{content:"";display:block;width:64px;height:6px;border-radius:10px;background:#ffc400;margin-top:13px}
+.list-subtitle{margin:13px 0 19px;font-size:17px;color:#405b7d}
+.breadcrumb{font-size:13px;color:#60728a;margin-bottom:28px}
+.controls{background:rgba(255,255,255,.92);border:1px solid #dbe6f2;border-radius:14px;padding:20px 26px 22px;margin-bottom:25px;box-shadow:0 8px 25px rgba(35,73,116,.07)}
+.controls label{display:block;font-weight:800;color:#073d83;margin-bottom:9px;font-size:14px}
+.custom-select{position:relative;width:360px;max-width:100%}
+.custom-select__trigger{width:100%;min-height:52px;border:1px solid #d5e2f1;border-radius:14px;background:linear-gradient(180deg,#fff 0,#f5f9ff 100%);color:#1d314c;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px 0 18px;cursor:pointer;box-shadow:0 10px 24px rgba(17,54,90,.06);transition:all .2s ease}
+.custom-select__value{font-weight:800;letter-spacing:.06em;color:#113d73;text-transform:uppercase}
+.custom-select__panel{position:absolute;top:calc(100% + 10px);left:0;width:100%;max-width:420px;background:rgba(255,255,255,.98);border:1px solid #dfeaf7;border-radius:16px;box-shadow:0 22px 55px rgba(17,60,98,.2);padding:10px;display:none;z-index:20}
+.custom-select.open .custom-select__panel{display:block}
+.custom-select__search{padding:4px 4px 10px}
+.custom-select__search input{width:100%;border:1px solid #d9e6f8;border-radius:10px;padding:11px 12px;background:#f9fbff;color:#1d314c;font:inherit;outline:none}
+.custom-select__options{list-style:none;padding:0;margin:0;max-height:220px;overflow-y:auto}
+.custom-select__option{padding:11px 12px;cursor:pointer;color:#1d314c;transition:background .1s}
+.custom-select__option:hover{background:#f0f5fd}
+.custom-select__option.is-selected{background:#e7f0ff;color:#0754b3;font-weight:700}
+.section-title{font-size:20px;font-weight:700;margin:28px 0 20px;color:#0b3978;position:relative}.section-title:before{content:"⌂";width:38px;height:38px;border-radius:10px;background:#e7f2ff;display:inline-flex;align-items:center;justify-content:center;font-size:22px;color:#0754a4}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.village-card{background:rgba(255,255,255,.97);border:1px solid #e0e7ef;border-radius:10px;overflow:hidden;box-shadow:0 5px 16px rgba(23,58,96,.07);display:flex;flex-direction:row;padding:10px;gap:13px;min-height:126px;transition:transform .2s}
+.village-card:hover{transform:translateY(-3px);border-color:#c9dbef;box-shadow:0 12px 25px rgba(25,68,111,.12)}
+.village-card img{width:122px;height:106px;flex:0 0 122px;object-fit:cover;border-radius:7px;background:#e9eef5}
+.card-body{padding:2px 0;display:flex;flex-direction:column;flex:1}
+.card-body h3{font-size:16px;line-height:1.25;margin:2px 0 11px;color:#0a3d82}
+.info-row{display:flex;justify-content:space-between;gap:6px;font-size:11.5px;margin:4px 0;color:#5a687b}
+.detail-btn{margin-top:auto;width:100%;border:0;border-radius:5px;background:#0754b3;color:#fff;padding:8px 7px;font-size:11.5px;font-weight:800;cursor:pointer}.detail-btn:hover{background:#063f8b}
+.source{margin-top:22px;padding:13px 15px;background:#edf6ff;border:1px solid #d3e7fb;border-radius:9px;font-size:12px;color:#365b83}
+.detail-page{padding:25px 0 55px;background:#f3f7fc;min-height:100vh}
+.detail-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(310px,1fr);gap:20px}
+.detail-main,.sidebar-card{background:#fff;border:1px solid #e0e7ef;border-radius:11px;box-shadow:0 6px 18px rgba(23,58,96,.06)}
+.hero-detail{padding:0;overflow:hidden}
+.hero-content{display:grid;grid-template-columns:48% 52%;min-height:310px}
+.hero-content img{width:100%;height:310px;object-fit:cover}
+.hero-text{padding:42px 38px}
+.hero-text h1{margin:0 0 10px;color:#0c448e;font-size:34px}
+.hero-text .district{font-size:16px;margin-bottom:25px;color:#52657d}
+.hero-text p{line-height:1.85;color:#34445a;margin:0}
+.detail-card{margin-top:18px;padding:21px}
+.detail-card h2{font-size:18px;color:#10458c;margin:0 0 18px}
+.general-grid{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.general-col{padding-right:28px}
+.general-col+.general-col{border-left:1px solid #e2e7ee;padding-left:28px}
+.data-line{display:grid;grid-template-columns:160px 20px 1fr;gap:5px;margin:12px 0;font-size:13px}
+.bps-card{background:#fff;border:1px solid #dfe8f2;border-radius:12px;box-shadow:0 6px 18px rgba(23,58,96,.06);padding:22px;margin-top:16px}
+.bps-card h2{margin:0 0 8px;color:#0d448d;font-size:20px}
+.bps-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.bps-stat{border:1px solid #e1e8f0;border-radius:10px;padding:14px;background:#f9fbfe}
+.bps-stat .n{font-size:23px;font-weight:800;color:#0b4b97}
+.bps-stat small{display:block;color:#617087;margin-top:4px}
+.bps-table-wrap{overflow:auto;border:1px solid #e0e7ef;border-radius:9px}
+.bps-table{width:100%;border-collapse:collapse;min-width:680px;font-size:12.5px}
+.bps-table th,.bps-table td{padding:9px 10px;border-bottom:1px solid #e8edf3;text-align:left}
+.bps-table th{background:#eef6ff;color:#164c8c;font-weight:800}
+.bps-table td.num{text-align:right}
+.bps-table caption{text-align:left;padding:13px 12px;background:#fff;font-weight:800;color:#27476a}
+.bps-columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.bps-note{margin-top:10px;font-size:11px;color:#64758b;line-height:1.6}
+.sidebar{display:flex;flex-direction:column;gap:18px}
+.sidebar-card{padding:18px}
+.sidebar-card h2{font-size:18px;color:#10458c;margin:0 0 18px}
+.map{height:160px;border-radius:8px;overflow:hidden;background:linear-gradient(135deg,#dff0d7,#eef5db)}
+.pin{font-size:30px;position:absolute;left:50%;top:50%}
+.map-btn{display:block;width:100%;padding:10px;margin-top:10px;background:#0754b3;color:#fff;border:0;border-radius:7px;text-align:center;text-decoration:none;font-weight:700;cursor:pointer;font-size:12px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.stat{text-align:center}
+.stat .big{display:block;font-size:22px;font-weight:700;color:#0c448e}
+.stat small{display:block;margin-top:4px;color:#64738a;font-size:12px}
+.village-extra-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mini{border:1px solid #e1e7ee;border-radius:9px;padding:12px;background:#fbfdff}
+.mini b{display:block;color:#0d448d;font-size:16px}
+.mini small{color:#64738a}
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.gallery-grid img{width:100%;height:120px;object-fit:cover;border-radius:7px}
+@media(max-width:1200px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:650px){.container{width:92%}.grid{grid-template-columns:1fr}.detail-layout{grid-template-columns:1fr}.hero-content{grid-template-columns:1fr}.hero-content img{height:230px}.general-grid{grid-template-columns:1fr}.general-col{padding:0}.general-col+.general-col{border-left:0;border-top:1px solid #e2e7ee;padding:12px 0 0}.bps-grid{grid-template-columns:repeat(2,1fr)}.bps-columns{grid-template-columns:1fr}.village-extra-grid{grid-template-columns:repeat(2,1fr)}.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<section id="listPage" class="page active list-page">
+  <main class="container">
+    <button class="back-btn" onclick="backToKecamatan()">←&nbsp; Kembali ke Halaman Kecamatan</button>
+    <h1 class="list-title">Desa di Kecamatan Parongpong</h1>
+    <p class="list-subtitle">Data wilayah, pemerintahan, penduduk, sosial, pertanian, pariwisata, transportasi, komunikasi, perbankan, koperasi, dan perdagangan berdasarkan <strong>Kecamatan Parongpong Dalam Angka 2025</strong>.</p>
+    <div class="breadcrumb">Kecamatan &nbsp;›&nbsp; Desa &nbsp;›&nbsp; Parongpong</div>
+
+    <div class="controls">
+      <label for="districtSearch">Pilih Kecamatan</label>
+      <div class="custom-select" id="districtSelect">
+        <button class="custom-select__trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+          <span class="custom-select__value">PARONGPONG</span><span class="custom-select__icon">▾</span>
+        </button>
+        <div class="custom-select__panel" role="listbox" aria-label="Daftar kecamatan">
+          <div class="custom-select__search"><input id="districtSearch" type="text" placeholder="Cari kecamatan..." autocomplete="off"></div>
+          <ul id="districtOptions" class="custom-select__options"></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title">Daftar Desa di Kecamatan <span id="districtName">Parongpong</span></div>
+    <div id="villageGrid" class="grid"></div>
+
+    <div class="bps-overview" style="margin-top:24px">
+      <div class="bps-card">
+        <h2>Gambaran Umum Kecamatan Parongpong</h2>
+        <p class="lead">Kecamatan Parongpong merupakan wilayah dengan berbagai potensi pengembangan di sektor pertanian, perdagangan, dan pariwisata.</p>
+        <div class="bps-grid" id="statsGrid"></div>
+      </div>
+
+      <div class="bps-card">
+        <h2>Geografi & Administrasi</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Luas dan persentase wilayah, 2025</caption><thead><tr><th>Desa</th><th>Luas (km²)</th><th>% Kecamatan</th></tr></thead><tbody id="areaTable"></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Jarak ke pusat pemerintahan (km), 2021</caption><thead><tr><th>Desa</th><th>Kecamatan</th><th>Kabupaten/Kota</th></tr></thead><tbody id="distanceTable"></tbody></table></div>
+        </div>
+      </div>
+
+      <div class="bps-card">
+        <h2>Pembagian Administratif</h2>
+        <div class="bps-columns">
+          <div class="bps-table-wrap"><table class="bps-table"><caption>RW dan RT per desa, 2024</caption><thead><tr><th>Desa</th><th>RW</th><th>RT</th></tr></thead><tbody id="rwrtTable"></tbody></table></div>
+          <div class="bps-table-wrap"><table class="bps-table"><caption>Penduduk, 2024</caption><thead><tr><th>Desa</th><th>Laki-laki</th><th>Perempuan</th><th>Total</th><th>Kepadatan</th><th>Sex Ratio</th></tr></thead><tbody id="popTable"></tbody></table></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="source"><strong>Sumber utama:</strong> BPS Kabupaten Bandung Barat, <em>Kecamatan Parongpong Dalam Angka 2025</em>.</div>
+  </main>
+</section>
+
+<section id="detailPage" class="page detail-page">
+  <main class="container">
+    <button class="back-btn" onclick="showList()">←&nbsp; Kembali ke Daftar Desa</button>
+    <div class="detail-layout">
+      <div>
+        <div class="detail-main hero-detail"><div class="hero-content"><img id="detailImage" src="" alt=""><div class="hero-text"><h1 id="detailName"></h1><div class="district">Kecamatan <span id="detailDistrict">Parongpong</span>, Kabupaten Bandung Barat</div><p id="detailDescription"></p></div></div></div>
+        <div class="detail-main detail-card"><h2>Informasi Umum Desa</h2><div class="general-grid"><div class="general-col"><div class="data-line"><b>Luas Wilayah 2025</b><span>:</span><span id="area"></span></div><div class="data-line"><b>Persentase Wilayah</b><span>:</span><span id="areaPct"></span></div><div class="data-line"><b>Penduduk 2024</b><span>:</span><span id="population"></span></div><div class="data-line"><b>Laki-laki</b><span>:</span><span id="male"></span></div><div class="data-line"><b>Perempuan</b><span>:</span><span id="female"></span></div><div class="data-line"><b>Kepadatan</b><span>:</span><span id="density"></span></div></div><div class="general-col"><div class="data-line"><b>Rasio Jenis Kelamin</b><span>:</span><span id="sexRatio"></span></div><div class="data-line"><b>RW</b><span>:</span><span id="rw"></span></div><div class="data-line"><b>RT</b><span>:</span><span id="rt"></span></div><div class="data-line"><b>Kode Desa</b><span>:</span><span id="code"></span></div><div class="data-line"><b>Jarak ke Ibukota Kecamatan</b><span>:</span><span id="distDistrict"></span></div><div class="data-line"><b>Jarak ke Ibukota Kabupaten/Kota</b><span>:</span><span id="distRegency"></span></div></div></div></div>
+        <div class="detail-main detail-card"><h2>Statistik Desa dari BPS</h2><div class="village-extra-grid"><div class="mini"><b id="miniPop"></b><small>Penduduk 2024</small></div><div class="mini"><b id="miniDensity"></b><small>Kepadatan penduduk</small></div><div class="mini"><b id="miniRWRT"></b><small>RW / RT</small></div><div class="mini"><b id="miniArea"></b><small>Luas wilayah 2025</small></div></div></div>
+      </div>
+      <aside class="sidebar"><div class="sidebar-card"><h2>Peta Wilayah <span id="mapName"></span></h2><div class="map"><div class="pin">📍</div></div><a id="mapsLink" class="map-btn" href="#" target="_blank">Lihat di Google Maps ↗</a></div><div class="sidebar-card"><h2>Statistik Desa</h2><div class="stats"><div class="stat"><div class="big" id="statPop"></div><small>Jumlah Penduduk</small></div><div class="stat"><div class="big" id="statArea"></div><small>Luas Wilayah</small></div><div class="stat"><div class="big" id="statDensity"></div><small>Kepadatan</small></div><div class="stat"><div class="big" id="statSex"></div><small>Sex Ratio</small></div></div></div></div></aside>
+    </div>
+  </main>
+</section>
+
+<script>
+const districtOptions=[{value:'lembang',label:'LEMBANG',target:'lembang.html'},{value:'parongpong',label:'PARONGPONG',target:'parongpong.html'},{value:'cisarua',label:'CISARUA',target:'cisarua.html'},{value:'cikalongwetan',label:'CIKALONGWETAN',target:'cikalongwetan.html'},{value:'cipeundeuy',label:'CIPEUNDEUY',target:'cipeundeuy.html'},{value:'ngamprah',label:'NGAMPRAH',target:'ngamprah.html'},{value:'cipatat',label:'CIPATAT',target:'cipatat.html'},{value:'padalarang',label:'PADALARANG',target:'padalarang.html'},{value:'batujajar',label:'BATUJAJAR',target:'batujajar.html'},{value:'cihampelas',label:'CIHAMPELAS',target:'cihampelas.html'},{value:'cililin',label:'CILILIN',target:'cililin.html'},{value:'cipongkor',label:'CIPONGKOR',target:'cipongkor.html'},{value:'rongga',label:'RONGGA',target:'rongga.html'},{value:'sindangkerta',label:'SINDANGKERTA',target:'sindangkerta.html'},{value:'gununghalu',label:'GUNUNGHALU',target:'gununghalu.html'},{value:'saguling',label:'SAGULING',target:'saguling.html'}];
+const villages=[{name:"Desa Cihanjuang Rahayu",key:"cihanjuang_rahayu",area:"2.45 km²",areaPct:"3.21%",distDistrict:"0 km",distRegency:"28.0 km",rw:"12",rt:"42",male:"4,125",female:"4,125",pop:"8,250 jiwa",popPct:"3.21%",density:"3,367 jiwa/km²",sexRatio:"100.00",code:"32.17.02.2001"},{name:"Desa Sukaluyu",key:"sukaluyu",area:"3.12 km²",areaPct:"4.08%",distDistrict:"2.5 km",distRegency:"30.5 km",rw:"10",rt:"38",male:"3,920",female:"3,920",pop:"7,840 jiwa",popPct:"3.08%",density:"2,513 jiwa/km²",sexRatio:"100.00",code:"32.17.02.2002"},{name:"Desa Cipeundeuy",key:"cipeundeuy_p",area:"2.78 km²",areaPct:"3.64%",distDistrict:"3.1 km",distRegency:"31.1 km",rw:"9",rt:"35",male:"3,460",female:"3,460",pop:"6,920 jiwa",popPct:"2.72%",density:"2,490 jiwa/km²",sexRatio:"100.00",code:"32.17.02.2003"},{name:"Desa Cipongkor",key:"cipongkor_p",area:"4.25 km²",areaPct:"5.56%",distDistrict:"4.2 km",distRegency:"32.2 km",rw:"14",rt:"48",male:"4,890",female:"4,890",pop:"9,780 jiwa",popPct:"3.85%",density:"2,302 jiwa/km²",sexRatio:"100.00",code:"32.17.02.2004"},{name:"Desa Sindanglaya",key:"sindanglaya",area:"3.65 km²",areaPct:"4.78%",distDistrict:"2.8 km",distRegency:"30.8 km",rw:"11",rt:"40",male:"3,725",female:"3,725",pop:"7,450 jiwa",popPct:"2.93%",density:"2,041 jiwa/km²",sexRatio:"100.00",code:"32.17.02.2005"}];
+let selectedDistrict='parongpong';
+function renderDistrictOptions(){const list=document.getElementById('districtOptions'),search=document.getElementById('districtSearch'),valueLabel=document.querySelector('.custom-select__value');if(!list||!search||!valueLabel)return;const q=search.value.trim().toLowerCase();const filtered=districtOptions.filter(x=>x.label.toLowerCase().includes(q));list.innerHTML=filtered.map(x=>`<li class="custom-select__option ${x.value===selectedDistrict?'is-selected':''}" data-value="${x.value}">${x.label}</li>`).join('');const current=districtOptions.find(x=>x.value===selectedDistrict)||districtOptions[0];valueLabel.textContent=current.label;list.querySelectorAll('.custom-select__option').forEach(o=>o.onclick=()=>selectDistrict(o.dataset.value));}
+function toggleDistrictSelect(force){const s=document.getElementById('districtSelect'),t=document.querySelector('.custom-select__trigger');if(!s||!t)return;const open=typeof force==='boolean'?force:!s.classList.contains('open');s.classList.toggle('open',open);if(open)setTimeout(()=>document.getElementById('districtSearch')?.focus(),50)}
+function selectDistrict(v){selectedDistrict=v;renderDistrictOptions();toggleDistrictSelect(false);const d=districtOptions.find(x=>x.value===v);if(d?.target)window.location.href=d.target;}
+function renderVillages(){const grid=document.getElementById('villageGrid');grid.innerHTML=villages.map(v=>`<article class="village-card"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85" alt="${v.name}" onerror="this.src='https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85'"><div class="card-body"><h3>${v.name}</h3><div class="info-row"><span>Luas Wilayah</span><b>${v.area}</b></div><div class="info-row"><span>Penduduk 2024</span><b>${v.pop}</b></div><button class="detail-btn" onclick="openDetail('${v.key}')">Lihat Detail</button></div></article>`).join('');}
+function fillTables(){document.getElementById('areaTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.area.replace(' km²','')}</td><td class="num">${v.areaPct}</td></tr>`).join('');document.getElementById('distanceTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.distDistrict}</td><td class="num">${v.distRegency}</td></tr>`).join('');document.getElementById('rwrtTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.rw}</td><td class="num">${v.rt}</td></tr>`).join('');document.getElementById('popTable').innerHTML=villages.map(v=>`<tr><td>${v.name.replace('Desa ','')}</td><td class="num">${v.male}</td><td class="num">${v.female}</td><td class="num">${v.pop.replace(' jiwa','')}</td><td class="num">${v.density.replace(' jiwa/km²','')}</td><td class="num">${v.sexRatio}</td></tr>`).join('');}
+function fillStatsGrid(){const grid=document.getElementById('statsGrid');const totalArea=villages.reduce((sum,v)=>sum+parseFloat(v.area),0).toFixed(2);const totalPop=villages.reduce((sum,v)=>sum+parseInt(v.pop.replace(/[^0-9]/g,'')),0);const totalRW=villages.reduce((sum,v)=>sum+parseInt(v.rw),0);const totalRT=villages.reduce((sum,v)=>sum+parseInt(v.rt),0);grid.innerHTML=`<div class="bps-stat"><div class="n">${villages.length}</div><small>Desa</small></div><div class="bps-stat"><div class="n">${totalArea} km²</div><small>Luas Kecamatan 2025</small></div><div class="bps-stat"><div class="n">${totalPop.toLocaleString('id-ID')}</div><small>Penduduk 2024</small></div><div class="bps-stat"><div class="n">${(totalPop/totalArea).toFixed(2)}</div><small>Kepadatan</small></div><div class="bps-stat"><div class="n">${totalRW}</div><small>RW</small></div><div class="bps-stat"><div class="n">${totalRT}</div><small>RT</small></div><div class="bps-stat"><div class="n">-</div><small>PNS</small></div><div class="bps-stat"><div class="n">-</div><small>Koperasi</small></div>`;}
+function openDetail(key){const v=villages.find(x=>x.key===key);if(!v)return;document.getElementById('listPage').classList.remove('active');document.getElementById('detailPage').classList.add('active');document.getElementById('detailImage').src='https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=85';document.getElementById('detailImage').alt=v.name;document.getElementById('detailName').textContent=v.name;document.getElementById('detailDescription').textContent=`${v.name} berada di Kecamatan Parongpong, Kabupaten Bandung Barat. Ringkasan statistik pada halaman ini mengikuti data BPS yang tersedia untuk desa tersebut.`;for(const id of ['area','areaPct','population','male','female','density','sexRatio','rw','rt','code','distDistrict','distRegency'])document.getElementById(id).textContent=v[id==='population'?'pop':id];document.getElementById('miniPop').textContent=v.pop;document.getElementById('miniDensity').textContent=v.density;document.getElementById('miniRWRT').textContent=`${v.rw} / ${v.rt}`;document.getElementById('miniArea').textContent=v.area;document.getElementById('statPop').textContent=v.pop.replace(' jiwa','');document.getElementById('statArea').textContent=v.area;document.getElementById('statDensity').textContent=v.density.replace(' jiwa/km²','');document.getElementById('statSex').textContent=v.sexRatio;document.getElementById('mapName').textContent=v.name;document.getElementById('mapsLink').href=`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(v.name+' Parongpong Bandung Barat')}`;window.scrollTo({top:0,behavior:'auto'});}
+function showList(){document.getElementById('detailPage').classList.remove('active');document.getElementById('listPage').classList.add('active');window.scrollTo({top:0,behavior:'auto'});}
+function backToKecamatan(){window.location.href='kecamatan.html';}
+document.addEventListener('click',e=>{const s=document.getElementById('districtSelect');if(s&&!s.contains(e.target))toggleDistrictSelect(false)});document.querySelector('.custom-select__trigger')?.addEventListener('click',()=>toggleDistrictSelect());document.getElementById('districtSearch')?.addEventListener('input',renderDistrictOptions);document.getElementById('districtSearch')?.addEventListener('keydown',e=>{if(e.key==='Enter'){const x=document.querySelector('#districtOptions .custom-select__option');if(x)selectDistrict(x.dataset.value)}});
+renderDistrictOptions();renderVillages();fillTables();fillStatsGrid();
+</script>
+</body>
+</html>
